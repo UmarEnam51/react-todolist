@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Container, Row, Col, Form, InputGroup, Button, Modal, Toast, ToastContainer } from 'react-bootstrap';
 import TaskList from './assets/TaskList';
 import TaskForm from './assets/TaskForm';
@@ -308,13 +308,16 @@ function App() {
         />
 
         {/* Task Form Modal (Add / Edit) */}
-        <TaskForm
-          show={showForm}
-          handleClose={handleCloseForm}
-          addTask={addTask}
-          editTask={editTask}
-          taskToEdit={taskToEdit}
-        />
+        {showForm && (
+          <TaskForm
+            key={taskToEdit ? `edit-${taskToEdit.id}` : 'add-new'}
+            show={showForm}
+            handleClose={handleCloseForm}
+            addTask={addTask}
+            editTask={editTask}
+            taskToEdit={taskToEdit}
+          />
+        )}
 
         {/* Delete Confirmation Modal */}
         <Modal

@@ -1,34 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Button, Form, Modal } from 'react-bootstrap';
 
 const TaskForm = ({ show, handleClose, addTask, editTask, taskToEdit }) => {
-  const [task, setTask] = useState({
-    name: '',
-    priority: 'Medium',
-    status: 'To Do',
-    notes: '',
-  });
+  const [task, setTask] = useState(() => ({
+    name: taskToEdit?.name || '',
+    priority: taskToEdit?.priority || 'Medium',
+    status: taskToEdit?.status || 'To Do',
+    notes: taskToEdit?.notes || '',
+  }));
 
   const [validated, setValidated] = useState(false);
-
-  useEffect(() => {
-    if (taskToEdit) {
-      setTask({
-        name: taskToEdit.name || '',
-        priority: taskToEdit.priority || 'Medium',
-        status: taskToEdit.status || 'To Do',
-        notes: taskToEdit.notes || '',
-      });
-    } else {
-      setTask({
-        name: '',
-        priority: 'Medium',
-        status: 'To Do',
-        notes: '',
-      });
-    }
-    setValidated(false);
-  }, [taskToEdit, show]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -70,7 +51,7 @@ const TaskForm = ({ show, handleClose, addTask, editTask, taskToEdit }) => {
       <Modal.Header closeButton className="border-0 pb-0">
         <Modal.Title className="fw-bold fs-5 d-flex align-items-center gap-2">
           <i
-            className={`bi ${taskToEdit ? 'bi-pencil-square text-primary' : 'bi-plus-circle-fill text-purple'}`}
+            className={`bi ${taskToEdit ? 'bi-pencil-square text-primary' : 'bi-plus-circle-fill'}`}
             style={{ color: '#7c3aed' }}
           ></i>
           <span>{taskToEdit ? 'Edit Tugas' : 'Tambah Tugas Baru'}</span>
