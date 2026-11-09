@@ -86,26 +86,5 @@ react-todolist-crud/
 
 ---
 
-## 🚀 Panduan Menjalankan Proyek di Komputer Lokal
 
-### 1. Prasyarat
-Pastikan Anda telah menginstal **Node.js** (versi 18 ke atas) dan **npm**.
-
-### 2. Langkah Menjalankan
-Buka terminal pada folder proyek ini, lalu jalankan:
-
-```bash
-# 1. Pindah ke direktori proyek (jika belum berada di dalamnya)
-cd react-todolist-crud
-
-# 2. Instal seluruh dependensi
-npm install
-
-# 3. Jalankan development server
-npm run dev
-```
-
-Buka browser dan akses alamat yang ditampilkan pada terminal (biasanya `http://localhost:5173/`).
-
----
 
